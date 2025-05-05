@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Market</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="inputs-container">
+            <input id="search-input" type="text" placeholder="Search By Name or Symbol" name="search-input">
+            <button onclick="sortByMktCap()" class="pointer" id="sortByMktCap">Sort By Market Cap</button>
+            <button onclick="sortByPercentage()" classs="pointer" id="sortByPercentage">Sort By Percentage</button>
+        </div>
+        <div class="crypto-container">
+            <table>
+                <tbody class="coins">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

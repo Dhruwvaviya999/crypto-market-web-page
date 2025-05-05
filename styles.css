@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+body{
+    background-color: #1A1A1C
+}
+
+.main-container{
+    margin: 20px;
+}
+
+.inputs-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    height: 50px;
+}
+
+#search-input{
+    width: 69%;
+    height: 50px;
+    padding: 20px;
+    font-size: 17px;
+    background-color: #1A1A1C;
+    border: 1px solid #FFFFFF;
+}
+
+#sortByMktCap{
+    width: 14%;
+    height: 50px;
+    font-size: 17px;
+    background-color: #1A1A1C;
+    border: 1px solid #FFFFFF;
+}
+
+#sortByPercentage{
+    width: 14%;
+    height: 50px;
+    font-size: 17px;
+    background-color: #1A1A1C;
+    border: 1px solid #FFFFFF;
+}
+
+.crypto-container{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+table{
+    width: 100%;
+}
+
+td{
+    text-align: end;
+}
+
+tr{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+    align-items: center;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.pointer{
+    cursor: pointer;
+}

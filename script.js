@@ -41,46 +41,52 @@ async function renderCoins() {
     }
 }
 
-async function sortByMktCap() {
-    let coinData = await fetchData();
+function sortByMktCap() {
+    fetchData().then((data) => {
+        let sortedData = data.sort((a, b) => a.market_cap - b.market_cap);
+        const tbody = document.querySelector(".coins");
+        
+        tbody.innerHTML = "";
+        sortedData.map((coinData) => {
+            tbody.innerHTML += ` 
+            <tr>
+                <td width="15%" style="display: flex; align-items: center; gap: 15px;"><img width="40px" src=${coinData.image} alt="logo"><span>${coinData.name}</span></td>
+                <td width="15%">${coinData.symbol.toUpperCase()}</td>
+                <td width="17.5%" >$${coinData.current_price}</td>
+                <td width="17.5%" >$${coinData.total_volume}</td>
+                <td width="17.5%"  style="color: ${coinData.price_change_percentage_24h < 1 ? "red" : "green"}">${coinData.price_change_percentage_24h}</td>
+                <td width="17.5%" >Mkt Cap: $${coinData.market_cap}</td>
+            </tr>
+            `;
+        });
+    }).catch((err) => {
+        console.log(err);
+    })
     
-    let sortedData = coinData.sort((a, b) => a.market_cap - b.market_cap);
-    const tbody = document.querySelector(".coins");
-    
-    tbody.innerHTML = "";
-    sortedData.map((coinData) => {
-        tbody.innerHTML += ` 
-        <tr>
-            <td width="15%" style="display: flex; align-items: center; gap: 15px;"><img width="40px" src=${coinData.image} alt="logo"><span>${coinData.name}</span></td>
-            <td width="15%">${coinData.symbol.toUpperCase()}</td>
-            <td width="17.5%" >$${coinData.current_price}</td>
-            <td width="17.5%" >$${coinData.total_volume}</td>
-            <td width="17.5%"  style="color: ${coinData.price_change_percentage_24h < 1 ? "red" : "green"}">${coinData.price_change_percentage_24h}</td>
-            <td width="17.5%" >Mkt Cap: $${coinData.market_cap}</td>
-        </tr>
-        `;
-    });
 };
 
-async function sortByPercentage() {
-    let coinData = await fetchData();
-    
-    let sortedData = coinData.sort((a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h);
-    const tbody = document.querySelector(".coins");
-    
-    tbody.innerHTML = "";
-    sortedData.map((coinData) => {
-        tbody.innerHTML += ` 
-        <tr>
-            <td width="15%" style="display: flex; align-items: center; gap: 15px;"><img width="40px" src=${coinData.image} alt="logo"><span>${coinData.name}</span></td>
-            <td width="15%">${coinData.symbol.toUpperCase()}</td>
-            <td width="17.5%" >$${coinData.current_price}</td>
-            <td width="17.5%" >$${coinData.total_volume}</td>
-            <td width="17.5%"  style="color: ${coinData.price_change_percentage_24h < 1 ? "red" : "green"}">${coinData.price_change_percentage_24h}</td>
-            <td width="17.5%" >Mkt Cap: $${coinData.market_cap}</td>
-        </tr>
-        `;
-    });
+function sortByPercentage() {
+    fetchData().then((data) => {
+        let sortedData = data.sort((a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h);
+        const tbody = document.querySelector(".coins");
+        
+        tbody.innerHTML = "";
+        sortedData.map((coinData) => {
+            tbody.innerHTML += ` 
+            <tr>
+                <td width="15%" style="display: flex; align-items: center; gap: 15px;"><img width="40px" src=${coinData.image} alt="logo"><span>${coinData.name}</span></td>
+                <td width="15%">${coinData.symbol.toUpperCase()}</td>
+                <td width="17.5%" >$${coinData.current_price}</td>
+                <td width="17.5%" >$${coinData.total_volume}</td>
+                <td width="17.5%"  style="color: ${coinData.price_change_percentage_24h < 1 ? "red" : "green"}">${coinData.price_change_percentage_24h}</td>
+                <td width="17.5%" >Mkt Cap: $${coinData.market_cap}</td>
+            </tr>
+            `;
+        });
+    }).catch((err) => {
+        console.log(err);
+        
+    })
 };
 
 
